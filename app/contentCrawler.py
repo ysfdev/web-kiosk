@@ -24,11 +24,7 @@ class getFeedsContent:
         self.get_news_feeds()
         self.get_sports_feeds()
         self.get_weather_feeds()
-
-
-    def __del__(self):
-
-        self.browser.close()
+        
 
     def get_news_feeds(self):
 
