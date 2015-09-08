@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {%block content %}
     <div id="feeds1-container">
-        <h2 class="h2-headings">News</h2>
+        <h2 class="h2-headings">USA News</h2>
 
         <ul>
         	
-       {%for i in range(9)%}
-            <li class="feeds-content">{{news_content[i]}}</li>
+       {%for news in news_content%}
+            <li class="feeds-content">{{news}}</li>
       	{%endfor%}
-        
+       
         </ul>
         
     </div>

@@ -113,6 +113,7 @@ class getIndexFeedsContent:
              weather_desc_feeds.append(feeds_desc[i].text) # feed titles descriptions
              i += 1
 
+
 class getPage2FeedsContent:
 
 
@@ -120,8 +121,8 @@ class getPage2FeedsContent:
 
         print("on")
         #self.get_tech_feeds()
-        #self.get_cybersecurity_feeds()
-        #self.get_dod_feeds()
+       # self.get_cybersecurity_feeds()
+       # self.get_movie_feeds()
 
     def get_movie_feeds(self):
 
