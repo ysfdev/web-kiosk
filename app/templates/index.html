@@ -1,19 +1,18 @@
 {% extends "base.html" %}
-
 {%block content %}
-    <div id="news-container">
+    <div id="feeds1-container">
         <h2 class="h2-headings">News</h2>
 
         <ul>
         	
-        {%for news in news_content%}
-            <li class="feeds-content">{{news}}</li>
-        {%endfor%}
+       {%for i in range(9)%}
+            <li class="feeds-content">{{news_content[i]}}</li>
+      	{%endfor%}
         
         </ul>
         
     </div>
-    <div id="sports-container">
+    <div id="feeds2-container">
         <h2 class="h2-headings">Sports</h2>
         <ul >
         {%for sports in sports_content%}
@@ -22,12 +21,14 @@
         </ul>
     </div>
 
-    <div id="weather-container">
+    <div id="feeds3-container">
         <h2 class="h2-headings">Weather</h2>
          <ul >
-        {%for weather in weather_content%}
-            <li class="feeds-content">{{weather}}</li>
-        {%endfor%}
+         	{%for i in range(5)%}
+            <li class="feeds-content">{{weather_content[i]}}</li>
+            <p>{{weather_desc_content[i]}}</p>
+      		{%endfor%}
+           
         </ul>
 {% endblock %}
 
