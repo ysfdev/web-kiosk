@@ -6,5 +6,6 @@ Web kiosk using to display trending information from different subjects
  - sports 
  - movies
  - tech news
+ - MTA info
  - more to come
  
