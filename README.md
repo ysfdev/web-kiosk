@@ -9,3 +9,8 @@ Web kiosk using to display trending information from different subjects
  - MTA info
  - more to come
  
+# Dependencies
+ - Flask
+ - Requests
+ - BeautifulSoup
+ - lxml
