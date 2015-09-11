@@ -13,6 +13,7 @@ Web kiosk to display trending information from different subjects
  - Flask
  - Requests
  - BeautifulSoup
+ - lxml
 
 #Installation
 To start the kiosk all you will need to create a directory where to have all the kiosk files, then follow this steps:
