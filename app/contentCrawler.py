@@ -1,14 +1,24 @@
-from pyvirtualdisplay import Display
-from selenium import webdriver
-from time import sleep
-import requests
-from bs4 import BeautifulSoup
-from lxml import html
-from lxml import etree
+try:
+    import requests
+except ImportError:
+    print("Unable to Import Requests")
+
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+
+    print("Unable to import BeautifulSoup")
+
+try:
+
+    from lxml import html
+    from lxml import etree
+except ImportError:
+    print("Unable to import lxml")
+
 
 
 # lists hold feeds content
-
 
 news_feeds = []
 news_feeds_desc = []
@@ -23,9 +33,11 @@ mta_news_feeds = []
 
 
 class IndexFeedsContent:
+    '''
+        Crawls and returns all the content for the index page containers
+    '''
 
     def __init__(self):
-        print("on")
         self.get_news_feeds()
         self.get_movies_feeds()
         self.get_weather_feeds()
@@ -43,16 +55,17 @@ class IndexFeedsContent:
 
         if r.status_code == 200:
 
-            soup = BeautifulSoup(r.text, "xml")
-            news_data = soup.findAll('title')
-            feeds_desc = soup.findAll('description')
+            soup = BeautifulSoup(r.text, "xml") # parse the downloaded page into xml
+            news_data = soup.findAll('title')   # finds all titles tags in document
+            feeds_desc = soup.findAll('description')  # finds the description for each title tag
 
 
         news_feeds.clear()  # clear list before appending to it
         news_feeds_desc.clear()
 
         i = 1  # counter
-        #get data first 10 headings
+
+        #get data first only 10 headings
         for news in news_data[2:11]:
 
              news_feeds.append(news.text)
@@ -124,11 +137,11 @@ class IndexFeedsContent:
 
 
 class Page2FeedsContent:
-
+    '''
+        Crawls and returns all the content for page containers
+    '''
 
     def __init__(self):
-
-        print("on")
         self.get_tech_feeds()
         self.get_cybersecurity_feeds()
         self.get_sports_feeds()
@@ -146,8 +159,8 @@ class Page2FeedsContent:
 
         if r.status_code == 200:
 
-            soup = BeautifulSoup(r.text, "xml")
-            sports_data = soup.findAll('title')
+            soup = BeautifulSoup(r.text, "xml") # parse the downloaded page into xml
+            sports_data = soup.findAll('title') # finds all the title tags
 
 
         sports_feeds.clear()  # clear list before appending to it
@@ -155,10 +168,7 @@ class Page2FeedsContent:
         #get data first 10 headings
         for feeds in sports_data[2:12]:
 
-             sports_feeds.append(feeds.text)
-
-
-
+                sports_feeds.append(feeds.text) # appends the feeds to sports_feeds list
 
     def get_tech_feeds(self):
 
