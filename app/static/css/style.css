@@ -3,8 +3,6 @@
     	background-color: rgb(235, 235, 236);
 
 
-
-
 }
 
 .h1-heading{
@@ -33,69 +31,232 @@
         border-bottom: 15px solid #0078CC;
         margin: auto;
         box-shadow: 10px 10px red;
-
+		margin-top: 4%;
+		padding: 2%;
 
 }
 
-#news-container{
+
+
+#default-feeds-container{
 
 
         border: 4px groove #4082A3;
         position: relative;
-        width: 320px;
+        margin-top: 2%;
+        margin-left: 1px;    
+        
         height: 500px;
-        background: rgb(230,230,230);
-        margin-left: 5px;
-        margin-top: 4px;
-        margin-bottom: 4px;
+		background: white;
 
 }
 
-#sports-container{
+#feeds3-container{
 
 
         border: 4px groove #4082A3;
-        position: fixed;
-        left: 34%;
-        top:97px;
-        width: 320px;
-        height: 500px;
-        margin-right: 60px;
-        background: rgb(230,230,230);
+        position: relative;
+        margin-top: 2%;
+        margin-left: 1px;  
+        
+        height: 520px;
+		background: white;
+       
+
 
 }
+#movies-container{
 
-#weather-container{
 
-
-        position: fixed;
-        left: 67%;
-        top: 97px;
         border: 4px groove #4082A3;
-        width: 320px;
-        height: 500px;
-        margin-right: 60px;
-        background: rgb(230,230,230);
-
-
+        position: relative;
+        margin-top: 2%;
+        margin-left: 1px;  
+        
+        height: 540px;
+		background: white;
+       
 
 
 }
 #heading-menu{
 
 
+      border-top: 15px solid #0078CC;
       border-bottom: 8px solid #717A8A;
       margin-bottom: 1px;
-
+      width: 100%;
+      top: 0;
+      display: block;
+      position:auto;
+      background: #E1E4EA; 
 
 }
 
 .feeds-content{
 
-    font-size: 14px;
-    font-family: sans-serif;
-    text-align: center;
-    color: blue;
+    font-size: 26px;
+    font-family: "Times New Roman";
+    position:relative;
+    color: black;
+   
+    
+ 
+ 
+
+}
+
+.movie-image {
+	
+	width: 150px;
+	height: 150px;
+	margin-bottom: 2px;
+	
+}
+
+#movie-row1 {
+	
+	margin-left: 15px;
+	margin-top: 1px;
+	width: 240px;
+	
+	
+	
+}
+
+#movie-row2 {
+	
+	position: relative;
+	margin-left: 240px;
+	margin-top: -430px;
+	width: 250px;
+	
+	
+}
+
+#movie-row3 {
+	
+	position: relative;
+	margin-left: 490px;
+	margin-top: -455px;
+	width: 240px;
+	
+	
+}
+
+#movie-row4 {
+	
+	position: relative;
+	margin-left: 735px;
+	margin-top: -429px;
+	width: 200px;
+	
+	
+}
+
+#weather-container {
+	
+	 border: 4px groove #4082A3;
+     position: relative;
+     margin-top: 2%;
+     margin-left: 1px;  
+        
+     height: 500px;
+     background:white;
+	
+	
+}
+
+#weather-header-row {
+	
+	margin-top: 2px;
+	position: center;	
+	border: 3px outset red;
+	text-align: center;
+	
+}
+
+#weather-row1 {
+	margin-left: 30px;
+	margin-top: 4px;
+	width: 300px;
+	position: relative;
+	
+	
+}
+
+
+
+#weather-row2 {
+	
+	width: 300px;
+	margin-left: 350px;
+	margin-top: -265px;
+	position: relative;
+	
+	
+}
+
+#weather-row3 {
+	
+	width: 300px;
+	margin-left: 350px;
+	position: relative;
+	margin-top
+
+
+		
+	
+}
+
+#weather-row4 {
+	
+	width: 240px;
+	margin-left: 680px;
+	margin-top: -200px;
+	
+	
+	
+}
+
+#mta-feeds-container{
+
+
+       border: 4px groove #4082A3;
+        position: relative;
+        margin-top: 2%;
+        margin-left: 1px;  
+        
+        height: 600px;
+		background: white;
+       
 
 
 }
+
+#mta-widget {
+	
+	margin-left:8px;
+	margin-top: 30px;
+	width:240px; 
+	border: 3px solid  #4082A3;
+	
+}
+
+#mta-feeds-contents {
+	
+	width: 700px;
+	margin-left: 260px;
+	margin-top: -500px;
+	border: 3px solid #4082A3
+	
+}
+
+.feeds-content-heading {
+	
+	color: red;
+	text-align: center;
+	border: 1px groove black;
+	
+}
+

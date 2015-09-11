@@ -3,6 +3,8 @@ from selenium import webdriver
 from time import sleep
 import requests
 from bs4 import BeautifulSoup
+from lxml import html
+from lxml import etree
 
 
 # lists hold feeds content
@@ -14,25 +16,24 @@ sports_feeds = []
 weather_feeds = []
 weather_desc_feeds = []
 tech_feeds = []
-movie_feeds = []
+movies_titles = []
+movies_links = []
 cybersecurity_feeds = []
+mta_news_feeds = []
 
 
-
-class getIndexFeedsContent:
-
-
+class IndexFeedsContent:
 
     def __init__(self):
         print("on")
-        #self.get_news_feeds()
-        #self.get_sports_feeds()
-        #self.get_weather_feeds()
+        self.get_news_feeds()
+        self.get_movies_feeds()
+        self.get_weather_feeds()
 
 
     def get_news_feeds(self):
 
-        url = 'http://rssfeeds.usatoday.com/usatoday-NewsTopStories'
+        url = 'http://news.yahoo.com/rss/us'
 
         #get news data
 
@@ -58,13 +59,9 @@ class getIndexFeedsContent:
              news_feeds_desc.append(feeds_desc[i].text)
              i =+ 1
 
+    def get_movies_feeds(self):
 
-
-
-    def get_sports_feeds(self):
-
-
-        url = 'http://www.usnews.com/rss/news'
+        url = 'http://www.fandango.com/rss/top10boxoffice.rss'
 
         #get news data
 
@@ -75,15 +72,27 @@ class getIndexFeedsContent:
         if r.status_code == 200:
 
             soup = BeautifulSoup(r.text, "xml")
-            sports_data = soup.findAll('title')
+            titles = soup.findAll('title')
+            image_links = soup.findAll('enclosure') # contains images links
 
 
-        sports_feeds.clear()  # clear list before appending to it
+        movies_titles.clear()  # clear list before appending to it
+        movies_links.clear()
 
-        #get data first 10 headings
-        for feeds in sports_data[1:11]:
+        title_counter = 2
+        image_counter = 0
 
-             sports_feeds.append(feeds.text)
+        #get data first 10  headings
+        for feeds in titles[2:12]:
+
+            movies_links.append(str(image_links[image_counter])[45:-3]) # appends only href links
+            movies_titles.append(str(titles[title_counter].text)[2:]) # append text after second index
+
+            title_counter += 1
+            image_counter += 1
+
+
+
 
     def get_weather_feeds(self):
 
@@ -114,19 +123,20 @@ class getIndexFeedsContent:
              i += 1
 
 
-class getPage2FeedsContent:
+class Page2FeedsContent:
 
 
     def __init__(self):
 
         print("on")
-        #self.get_tech_feeds()
-       # self.get_cybersecurity_feeds()
-       # self.get_movie_feeds()
+        self.get_tech_feeds()
+        self.get_cybersecurity_feeds()
+        self.get_sports_feeds()
+        self.get_mta_feeds()
 
-    def get_movie_feeds(self):
+    def get_sports_feeds(self):
 
-        url = 'http://movieweb.com/rss/new-movies/'
+        url = 'http://sports.espn.go.com/espn/rss/news'
 
         #get news data
 
@@ -137,15 +147,18 @@ class getPage2FeedsContent:
         if r.status_code == 200:
 
             soup = BeautifulSoup(r.text, "xml")
-            feeds_data = soup.findAll('title')
+            sports_data = soup.findAll('title')
 
 
-        movie_feeds.clear()  # clear list before appending to it
+        sports_feeds.clear()  # clear list before appending to it
 
         #get data first 10 headings
-        for feeds in feeds_data[1:11]:
+        for feeds in sports_data[2:12]:
 
-            movie_feeds.append(feeds.text)
+             sports_feeds.append(feeds.text)
+
+
+
 
     def get_tech_feeds(self):
 
@@ -170,6 +183,7 @@ class getPage2FeedsContent:
 
              tech_feeds.append(feeds.text)
 
+
     def get_cybersecurity_feeds(self):
 
         url = 'http://feeds.feedburner.com/TheHackersNews'
@@ -190,7 +204,21 @@ class getPage2FeedsContent:
         cybersecurity_feeds.clear()  # clear list before appending to it
 
         #get data first 10 headings
-        for feeds in feeds_data[1:11]:
+        for feeds in feeds_data[2:12]:
 
             cybersecurity_feeds.append(feeds.text)
 
+
+    def get_mta_feeds(self):
+
+        url = 'http://www.mta.info/mta-news'
+        page = requests.get(url)
+
+        tree = html.fromstring(page.text)
+        titles = tree.xpath(".//*[@id='block-views-mta-news-stories-block']/div/div/div/div/div/div/a")
+
+        mta_news_feeds.clear() #  clear list before appending
+
+        for title in titles[2:7]: # get first 10 titles
+
+            mta_news_feeds.append(title.text)

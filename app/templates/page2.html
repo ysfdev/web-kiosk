@@ -1,59 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
+  <head>
         <meta charset="utf-8">
         <title>Web Kiosk</title>
-        <link type="/text/javascript" href="js/script.js">
         <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta http-equiv="refresh" content="8; URL=/">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">       
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <!-- Latest boostrap compiled and minified JavaScript -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" charset="utf-8"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    	<script type="text/javascript" src="js/json2html.js"></script>
-    </head>
+    	<!-- Script to autoScroll page on load  -->
+    	<script src="./static/js/script.js"></script>
+    	<!-- Automatically go to index every 51 seconds  -->
+    	<meta http-equiv="refresh" content="51; URL=/">
+   </head>
 
+ <body>
+     <nav class="navbar navbar-reverse navbar-fixed-top">
+     <div id="heading-menu">
+     <h1 class="h1-heading">WEB KIOSK</h1>
+     </div>
+     </nav> <!-- End Main Nav Heading -->
+     
+  <div id="container", class="container-fluid">
+  				
+     <div id="mta-feeds-container">
+        <h2 class="h2-headings">MTA Info </h2>
+        <div id="mta-widget" >
+       	 	<h3 class="feeds-content-heading"> Trains Status </h3>       	
+        	<script src="./static/js/mta-widget.js"></script> <!-- display mta services widget.js -->
+        </div>	<!-- End mta-widget container -->
+        	
+        <div id="mta-feeds-contents">
+       		<h3 class="feeds-content-heading">NEWS</h3>
+       		<ul>
+       			{%for feeds in mta_content%}
+       			<li class="feeds-content">{{feeds}}</li>
+       			{%endfor%}
+       		</ul>
+       </div> <!-- End mta-feeds-contents -->
+    </div> <!-- End mta-feeds container -->
 
-    <body >
-    	<nav class="navbar navbar-reverse navbar-fixed-top">
-        <div id="heading-menu">
-        <h1 class="h1-heading">WEB KIOSK</h1>
-        </div>
-        </nav>
-        <div id="container", class="container-fluid">
-{%block content %}
-    <div id="feeds1-container">
+    <div id="default-feeds-container">
+        <h2 class="h2-headings">Sports</h2>
+        	<ul >
+        		{%for sports in sports_content%}
+            	<li class="feeds-content">{{sports}}</li>
+        		{%endfor%}
+        	</ul>
+        	
+    </div>  <!-- End sports-feeds container -->
+    
+    <div id="default-feeds-container">
         <h2 class="h2-headings">Tech News</h2>
 		<ul>
-        {%for feeds in tech_content%}
+        	{%for feeds in tech_content%}
             <li class="feeds-content">{{feeds}}</li>
-      	{%endfor%}
+      		{%endfor%}
+        </ul> 
+             
+    </div> <!-- End tech-news-feeds container -->
+    
+    <div id="default-feeds-container">
+        <h2 class="h2-headings">Cyber Security News</h2>
+        <ul>
+        	{%for feeds in cyber_content%}
+            <li class="feeds-content">{{feeds}}</li>
+      		{%endfor%}
         </ul>
         
-    </div>
-    <div id="feeds2-container">
-        <h2 class="h2-headings">Cyber News</h2>
-       <ul>
-        {%for feeds in cyber_content%}
-            <li class="feeds-content">{{feeds}}</li>
-      	{%endfor%}
-        </ul>
-        
-    </div>
-
-    <div id="feeds3-container">
-        <h2 class="h2-headings">In Theaters Movies</h2>
-         <ul >
-         {%for feeds in movie_content%}
-            <li class="feeds-content">{{feeds}}</li>
-      	{%endfor%}
-        </ul>
-        </ul>
-     </div>
-    </div>
+    </div> <!-- End cyber-security-feeds container -->
+  
+    
+  </div> <!-- End main  container -->
 </body>
+
 </html>
-{% endblock %}
+
 

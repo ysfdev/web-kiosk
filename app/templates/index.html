@@ -1,34 +1,108 @@
-{% extends "base.html" %}
-{%block content %}
-    <div id="feeds1-container">
-        <h2 class="h2-headings">USA News</h2>
+<!DOCTYPE html>
+<html>
+   <head>
+        <meta charset="utf-8">
+        <title>Web Kiosk</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">       
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Latest boostrap compiled and minified JavaScript -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" charset="utf-8"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   		<!-- Script to autoScroll page on load  -->
+   		<script src="./static/js/script.js"></script>
+   		<!-- Automatically go to page2 every 51 seconds  -->
+   		<meta http-equiv="refresh" content="51; URL=page2">
+   		
+   </head>
 
-        <ul>
-        	
-       {%for news in news_content%}
-            <li class="feeds-content">{{news}}</li>
-      	{%endfor%}
+
+   <body > 
+      	<nav class="navbar navbar-reverse navbar-fixed-top">
+        <div id="heading-menu">
+        <h1 class="h1-heading">WEB KIOSK</h1>
+        </div>
+       </nav> <!-- End Main Nav Heading -->
        
-        </ul>
+    <div id="container", class="container-fluid">
+   		<div id="default-feeds-container">
+        	<h2 class="h2-headings">USA News</h2>
+			<div class="feeds-list">
+        	<ul>       	
+        		{%for news in news_content%}
+            	<li class="feeds-content">{{news}}</li>
+      			{%endfor%}
+       
+        	</ul>
+          </div>
+       </div> <!-- End USA-news-container -->
+    
+      <div id="movies-container">
+         <h2 class="h2-headings">Trending Movies </h2>
+         <div id="movie-row1">
+            <h4 class="feeds-content">{{movies_titles[0]}}</h4>
+            <img class="movie-image" src={{movies_links[0]}}></img>
+            <h4 class="feeds-content">{{movies_titles[1]}}</h4>
+            <img class="movie-image" src="{{movies_links[1]}}"></img> 
+         </div>
+         
+         <div id="movie-row2">
+            <h4 class="feeds-content">{{movies_titles[2]}}</h4>
+            <img class="movie-image" src={{movies_links[2]}}></img>
+            <h4 class="feeds-content">{{movies_titles[3]}}</h4>
+            <img class="movie-image" src="{{movies_links[3]}}"></img> 
+                             	
+        </div>
         
-    </div>
-    <div id="feeds2-container">
-        <h2 class="h2-headings">Sports</h2>
-        <ul >
-        {%for sports in sports_content%}
-            <li class="feeds-content">{{sports}}</li>
-        {%endfor%}
-        </ul>
-    </div>
+        <div id="movie-row3">
+            <h4 class="feeds-content">{{movies_titles[4]}}</h4>
+            <img class="movie-image" src={{movies_links[4]}}></img>
+            <h4 class="feeds-content">{{movies_titles[5]}}</h4>
+            <img class="movie-image" src="{{movies_links[5]}}"></img> 
+                             	
+        </div>
+        
+        <div id="movie-row4">
+            <h4 class="feeds-content">{{movies_titles[6]}}</h4>
+            <img class="movie-image" src={{movies_links[6]}}></img>
+            <h4 class="feeds-content">{{movies_titles[7]}}</h4>
+            <img class="movie-image" src="{{movies_links[7]}}"></img> 
+                             	
+        </div>
+        	
+     </div> <!-- End movies-container -->
 
-    <div id="feeds3-container">
-        <h2 class="h2-headings">Weather</h2>
-         <ul >
-         	{%for i in range(5)%}
-            <li class="feeds-content">{{weather_content[i]}}</li>
-            <p>{{weather_desc_content[i]}}</p>
-      		{%endfor%}
-           
-        </ul>
-{% endblock %}
+    <div id="weather-container">
+         <h2 class="h2-headings">Weather</h2>
+         <div id="weather-header-row">
+            <h4 class="feeds-content">{{weather_content[0]}}</h4>                                      	
+        </div>
+        <div id="weather-row1">
+            <h4 class="feeds-content">{{weather_content[1]}}</h4>
+            <p class="weather-desc">{{weather_desc_content[1]}}</p>
+                                       	
+       		<br >
+            <h4 class="feeds-content">{{weather_content[2]}}</h4>
+            <p class="weather-desc">{{weather_desc_content[2]}}</p>                                       	
+        </div>
+        
+        <div id="weather-row2">
+            <h4 class="feeds-content">{{weather_content[3]}}</h4>
+            <p class="weather-desc">{{weather_desc_content[3]}}</p>                                       	                                    	
+        </div>
+        
+         <div id="weather-row3">
+            <h4 class="feeds-content">{{weather_content[4]}}</h4>
+            <p class="weather-desc">{{weather_desc_content[4]}}</p>                                      	
+        </div>
+         <div id="weather-row4">
+            <h4 class="feeds-content">{{weather_content[6]}}</h4>
+            <p class="weather-desc">{{weather_desc_content[6]}}</p>                                       	                                       	
+        </div> 
+             
+     </div>    <!-- End weather container -->    
+  </div> <!-- End main container -->
+</body>
 
+</html>
