@@ -2,6 +2,15 @@ from app import app
 from flask import render_template, request, redirect
 from app import contentCrawler
 from time import sleep
+try:
+    import feedsTextAlerts
+except ImportError:
+    print("Unable to import send_sms")
+try:
+    import twilio.twiml
+
+except ImportError:
+    print("Unable to import twiml")
 
 
 @app.route('/')
@@ -52,7 +61,7 @@ def page2():
 
 
 
-@app.route ("/sms-feeds")
+@app.route ('/sms-feeds', methods=['GET', 'POST'])
 
 def send_sms_feeds():
     '''
@@ -80,3 +89,30 @@ def send_sms_feeds():
 
     return str(resp)
 
+@app.route('/get-number', methods=['GET', 'POST'])
+def get_user_number():
+
+    delivery_status= []
+
+
+    if request.method == "POST":
+        try:
+            phone_number = request.form['url']
+
+
+        except:
+           delivery_status.append("Unable to process phone number")
+
+           return render_template('get-number.html', delivery_status = delivery_status)
+
+        try:
+
+            feedsTextAlerts.send_alert_feeds(phone_number)
+            delivery_status.append("Feeds Alerts will be send shortly..")
+
+
+        except:
+
+            delivery_status.append("Unable to send alerts feeds")
+
+    return render_template('get-number.html', delivery_status = delivery_status)

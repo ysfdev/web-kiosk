@@ -1,7 +1,8 @@
 #body-container{
 
     	background-color: rgb(235, 235, 236);
-
+    	background-image: url('http://creativewebdesigns.ca/wp-content/uploads/2012/05/creative-web-designs-background1.jpg')
+		
 
 }
 
@@ -261,3 +262,30 @@
 	
 }
 
+.sms-container {
+        max-width: 1000px;
+        border: 4px groove #4082A3;
+        width: 400px;
+        padding: 4px;
+        position: relative;
+        margin-left: 78px;
+        margin-top: 80px;
+        
+     }
+     
+.sms-main-container{
+
+    	background-color: rgb(235, 235, 236);
+    	background-image: url('http://fgxpress.vmers.com/wp-content/uploads/2014/01/BWHP-background.jpg');
+		border: 4px groove #4082A3;
+		margin-left: 20%;
+		width: 600px;
+		height: 500px;
+		margin-top: 10px;
+}
+
+.delivery-status{
+	
+	color: red;
+	
+}
