@@ -4,9 +4,7 @@ except ImportError:
     print("Unable to Import Requests")
 
 try:
-	   
-    import BeautifulSoup
-    #from bs4 import BeautifulSoup
+    from bs4 import BeautifulSoup
 except ImportError:
 
     print("Unable to import BeautifulSoup")

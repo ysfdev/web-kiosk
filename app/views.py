@@ -2,11 +2,6 @@ from app import app
 from flask import render_template, request, redirect
 from app import contentCrawler
 from time import sleep
-try:
-    import twilio.twiml
-
-except ImportError:
-    print("Unable to import twiml")
 
 
 @app.route('/')
